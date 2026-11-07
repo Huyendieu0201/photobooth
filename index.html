@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff0f4">
+  <title>little moments — Photobooth ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <!-- HEADER -->
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="little moments trang chủ">
+        <span class="brand-mark">✳</span>
+        <span>little <b>moments</b></span>
+      </a>
+      <div class="top-note"><span class="live-dot"></span> YOUR PERSONAL PHOTOBOOTH ♡</div>
+      <a class="top-link" href="#studio">LET'S TAKE A PHOTO <span>↗</span></a>
+    </header>
+
+    <main>
+      <!-- INTRO -->
+      <section class="intro">
+        <img class="float f1" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f380.svg" alt="bow">
+        <img class="float f2" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f338.svg" alt="flower">
+        <img class="float f3" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2728.svg" alt="sparkle">
+        <img class="float f4" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f353.svg" alt="strawberry">
+        <img class="float f5" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98b.svg" alt="butterfly">
+        <img class="float f6" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f430.svg" alt="bunny">
+        <img class="float f7" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f496.svg" alt="heart">
+        <img class="float f8" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f31f.svg" alt="star">
+        <div class="eyebrow">A LITTLE PLACE FOR BIG MEMORIES</div>
+        <h1>Make a moment.<br><em>Keep it forever.</em></h1>
+        <p>Chỉnh tóc một chút, cười thật tươi và lưu lại khoảnh khắc của riêng bạn ♡</p>
+      </section>
+
+      <!-- STUDIO -->
+      <section class="studio" id="studio">
+        <div class="studio-heading">
+          <div>
+            <div class="section-kicker">01 / THE STUDIO</div>
+            <h2>Your photo session</h2>
+          </div>
+          <div class="session-status" id="sessionStatus"><span class="status-dot"></span> Chưa kết nối camera</div>
+        </div>
+
+        <div class="studio-grid">
+          <!-- CAMERA -->
+          <section class="camera-panel">
+            <div class="camera-topline">
+              <span><span class="rec-dot"></span> LIVE PREVIEW</span>
+              <span class="camera-ratio">4 : 3</span>
+            </div>
+            <div class="camera-stage" id="cameraStage">
+              <video id="video" autoplay playsinline muted></video>
+              <canvas id="captureCanvas" hidden></canvas>
+              <div class="camera-placeholder" id="cameraPlaceholder">
+                <img class="ph-sticker" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4f7.svg" alt="">
+                <h3>Ready when you are ♡</h3>
+                <p>Bật camera để bắt đầu buổi chụp của bạn.</p>
+                <button class="button button-dark" id="startCamera">Bật camera <span>↗</span></button>
+              </div>
+              <div class="countdown" id="countdown" aria-live="assertive"></div>
+              <div class="flash" id="flash"></div>
+              <div class="camera-corner corner-tl"></div>
+              <div class="camera-corner corner-tr"></div>
+              <div class="camera-corner corner-bl"></div>
+              <div class="camera-corner corner-br"></div>
+              <div class="preview-label">LITTLE MOMENTS STUDIO</div>
+            </div>
+            <div class="camera-controls">
+              <button class="icon-button" id="flipCamera" title="Đổi camera" aria-label="Đổi camera">↔</button>
+              <div class="capture-main">
+                <span class="capture-hint" id="captureHint">4 tấm ảnh · 3 giây đếm ngược</span>
+                <button class="shutter" id="captureBtn" disabled aria-label="Bắt đầu chụp"><span></span></button>
+                <span class="shutter-label">TAKE YOUR STRIP</span>
+              </div>
+              <button class="icon-button" id="timerToggle" title="Bật/tắt đếm ngược" aria-label="Bật tắt đếm ngược">◷</button>
+            </div>
+            <div class="camera-footnote"><span>✦</span> Ảnh được xử lý ngay trên trình duyệt, không tải lên máy chủ.</div>
+          </section>
+
+          <!-- CUSTOM PANEL -->
+          <aside class="custom-panel">
+            <div class="panel-title">
+              <div>
+                <div class="section-kicker">02 / YOUR STYLE</div>
+                <h3>Make it yours</h3>
+              </div>
+              <span class="sparkle">✳</span>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label"><span>Photo layout</span><small id="layoutLabel">4 PHOTOS</small></div>
+              <div class="choice-row" id="countChoices">
+                <button class="choice" data-count="1">1 ảnh</button>
+                <button class="choice" data-count="2">2 ảnh</button>
+                <button class="choice" data-count="3">3 ảnh</button>
+                <button class="choice active" data-count="4">4 ảnh</button>
+                <button class="choice" data-count="6">6 ảnh</button>
+                <button class="choice" data-count="8">8 ảnh</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label"><span>Color mood</span><small id="filterCount">20 FILTERS</small></div>
+              <div class="filter-grid" id="filterChoices"></div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label"><span>Photo strip</span><small id="frameCount">24 FRAMES</small></div>
+              <div class="frame-grid" id="frameChoices"></div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label"><span>Little details</span><small>STICKERS</small></div>
+              <div class="decor-row" id="decorChoices"></div>
+            </div>
+
+            <div class="control-group message-group">
+              <label class="control-label" for="captionInput"><span>Write a little note</span><small>OPTIONAL</small></label>
+              <input id="captionInput" type="text" maxlength="32" placeholder="e.g. best day ever ♡">
+            </div>
+
+            <div class="privacy-note">
+              <span>♡</span>
+              <p>Your memories stay yours. Không có ảnh nào được lưu nếu bạn chưa tải về.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- RESULT -->
+      <section class="result-section" id="resultSection">
+        <div class="result-heading">
+          <div>
+            <div class="section-kicker">03 / THE KEEPSAKE</div>
+            <h2>Your little memory</h2>
+          </div>
+          <span class="result-count" id="resultCount">NO PHOTOS YET</span>
+        </div>
+        <div class="result-layout">
+          <div class="strip-wrap">
+            <div class="empty-result" id="emptyResult">
+              <img class="empty-img" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f9f8.svg" alt="">
+              <h3>Your photo strip will live here.</h3>
+              <p>Sau khi chụp xong, thành phẩm sẽ xuất hiện tại đây. Bạn vẫn đổi khung, filter, sticker được sau khi chụp!</p>
+            </div>
+            <img id="finalStrip" class="final-strip" alt="Dải ảnh photobooth của bạn" hidden>
+          </div>
+          <div class="result-actions">
+            <div class="result-copy">
+              <span class="section-kicker">A MEMORY TO KEEP</span>
+              <h3>One moment,<br><em>many feelings.</em></h3>
+              <p>Tải dải ảnh về máy hoặc chụp lại một bộ mới. Hãy giữ những khoảnh khắc thật đáng yêu nhé!</p>
+            </div>
+            <button class="button button-dark" id="downloadBtn" disabled>Download photo strip <span>↓</span></button>
+            <button class="button button-light" id="retakeBtn" disabled>↻ &nbsp; Chụp một bộ mới</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>✳ LITTLE MOMENTS PHOTOBOOTH</span>
+      <span>Stickers: Twemoji (CC-BY 4.0) · 2026</span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
